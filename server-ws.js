@@ -1,14 +1,14 @@
 import { WebSocketServer } from 'ws';
 
-import express from 'express';
-const app = express();
-const port = 3001;
+// import express from 'express';
+// const app = express();
+// const port = 3001;
 
-app.get("/", (req, res) => res.type('html').send(html));
+// app.get("/", (req, res) => res.type('html').send(html));
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+// app.listen(port, () => console.log(`Example app listening on port ${port}!`));
 
-const wss = new WebSocketServer({ port: 3000 });
+const wss = new WebSocketServer({ port: 3001 });
 
 wss.on('connection', function connection(ws) {
   console.log('\nNew client connected');
@@ -20,7 +20,7 @@ wss.on('connection', function connection(ws) {
   ws.send('something');
 });
 
-wss.on('listening', () => { console.log('WSS listening at :3000') });
+wss.on('listening', () => { console.log('WSS listening at :3001') });
 
 const html = `
 <!DOCTYPE html>
