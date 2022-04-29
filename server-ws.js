@@ -1,6 +1,6 @@
 import { WebSocketServer } from 'ws';
 
-const wss = new WebSocketServer({ port: 443 });
+const wss = new WebSocketServer({ port: 80 });
 
 wss.on('connection', function connection(ws) {
   console.log('\nNew client connected');
@@ -12,4 +12,4 @@ wss.on('connection', function connection(ws) {
   ws.send('something');
 });
 
-wss.on('listening', () => { console.log('WSS listening at :443') });
+wss.on('listening', () => { console.log('WSS listening at :80') });
