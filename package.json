@@ -1,0 +1,13 @@
+{
+  "name": "controller",
+  "type": "module",
+  "scripts": {
+    "socketio": "node server-socketio.js",
+    "ws": "node server-ws.js",
+    "dev": "yarn run ws"
+  },
+  "dependencies": {
+    "socket.io": "^4.5.0",
+    "ws": "^8.5.0"
+  }
+}
