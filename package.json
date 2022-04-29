@@ -1,6 +1,7 @@
 {
   "name": "controller",
   "type": "module",
+  "license" : "MIT",
   "scripts": {
     "socketio": "node server-socketio.js",
     "ws": "node server-ws.js",

@@ -1,6 +1,9 @@
+import { createServer } from 'http';
+import { parse } from 'url';
 import { WebSocketServer } from 'ws';
 
-const wss = new WebSocketServer({ port: 3001 });
+const server = createServer();
+const wss = new WebSocketServer({ noServer: true });
 
 wss.on('connection', function connection(ws) {
   console.log('\nNew client connected');
@@ -13,4 +16,16 @@ wss.on('connection', function connection(ws) {
   setTimeout(() => ws.send('You are connected!'), 1000);
 });
 
-wss.on('listening', () => { console.log('WSS listening at :3001') });
+server.on('upgrade', function upgrade(request, socket, head) {
+  const { pathname } = parse(request.url);
+
+  if (pathname === '/echo') {
+    wss.handleUpgrade(request, socket, head, function done(ws) {
+      wss.emit('connection', ws, request);
+    });
+  } else {
+    socket.destroy();
+  }
+});
+
+server.listen(3001);
